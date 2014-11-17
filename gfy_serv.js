@@ -47,7 +47,7 @@ function sendPic(url, response) {
 
 http.createServer(function (req, res) {
 
-  var i = Math.floor(Math.random() * mega.length * 5000);	
+  //var i = Math.floor(Math.random() * mega.length * 5000);	
   var q = querystring.parse(url.parse(req.url).query);
 
   switch ( req.url) {
@@ -66,8 +66,9 @@ http.createServer(function (req, res) {
       sendPic(req.url, res);
       break;
     default:
-      use_cache_index = false;
-      sendPic(req.url, res);     
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write('hi');
+      res.end();     
 
       break;
   }
